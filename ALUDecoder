@@ -1,0 +1,38 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 11/15/2026 12:42:19 PM
+// Design Name: 
+// Module Name: ALU
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module alu(input logic [31:0]SrcA,SrcB,
+input logic [2:0]alucontrol,
+output logic [31:0]aluout,
+output logic Zero);
+
+always_comb
+    case(alucontrol)
+        3'b010: aluout <= SrcA+SrcB;
+        3'b110: aluout <= SrcA-SrcB;
+        3'b000: aluout <= SrcA&SrcB;
+        3'b001: aluout <= SrcA|SrcB;
+        3'b111: aluout = ($signed(SrcA) < $signed(SrcB)) ? 32'd1 : 32'd0;
+        default: aluout = 32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+    endcase
+assign Zero = (aluout == 32'b0);
+endmodule
