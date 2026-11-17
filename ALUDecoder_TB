@@ -1,0 +1,46 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 11/10/2026 03:52:14 PM
+// Design Name: 
+// Module Name: ALUDecoder_TB
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module ALUDecoder_TB();
+logic [5:0] funct;
+logic [1:0] aluop;
+logic [2:0] alucontrol;
+aludec dut(funct,aluop,alucontrol);
+initial begin
+funct = 6'b100000;
+#10;
+funct = 6'b100010;
+#10;
+funct = 6'b100100;
+#10;
+funct = 6'b100101;
+#10;
+funct = 6'b101010;
+#10;
+funct = 6'b000000;
+#10;
+aluop = 2'b00;
+#10;
+aluop = 2'b01; 
+#10;
+end
+endmodule
