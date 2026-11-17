@@ -1,0 +1,41 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 10/30/2026 09:58:52 AM
+// Design Name: 
+// Module Name: RegisterFileSim
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module RegisterFile_TB();
+logic clk;
+logic WE3;
+logic [4:0]A1,A2,A3;
+logic [31:0]WD;
+logic [31:0]RD1,RD2;
+regfile dut(clk,WE3,A1,A2,A3,WD,RD1,RD2);
+initial begin
+    clk = 0;
+    forever #10 clk = ~clk;
+end
+initial begin
+A3 = 5'b00100; WD = 2026; WE3 = 1;
+#20;
+A3 = 5'b00101; WD = 526;
+#20;
+A1 = 5'b00100; A2 = 5'b00101; WE3 = 0;
+#20;
+end
+endmodule
