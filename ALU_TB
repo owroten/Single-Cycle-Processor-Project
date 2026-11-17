@@ -1,0 +1,44 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 11/15/2026 01:05:09 PM
+// Design Name: 
+// Module Name: ALUSim
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module ALU_TB();
+logic [31:0]SrcA,SrcB;
+logic [2:0]alucontrol;
+logic [31:0]ALUResult;
+logic Zero;
+
+alu dut(SrcA,SrcB,alucontrol,ALUResult,Zero);
+initial begin
+SrcA = 64; SrcB = 16; alucontrol = 3'b010;
+#10;
+SrcA = 64; SrcB = 16; alucontrol = 3'b110;
+#10;
+SrcA = 3; SrcB = 2; alucontrol = 3'b000;
+#10;
+SrcA = 2; SrcB = 1; alucontrol = 3'b001;
+#10;
+SrcA = 2; SrcB = 1; alucontrol = 3'b111;
+#10;
+SrcA = 1; SrcB = 2; alucontrol = 3'b111;
+#10;
+end
+endmodule
