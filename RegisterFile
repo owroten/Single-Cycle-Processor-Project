@@ -1,0 +1,33 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 10/30/2026 09:48:16 AM
+// Design Name: 
+// Module Name: RegisterFile
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module regfile(input logic clk,WE3,[4:0]A1,[4:0]A2,[4:0]A3,[31:0]WD,
+output logic [31:0]RD1,[31:0]RD2);
+
+logic [31:0] RF[31:0]; //32 Bit Register File
+
+always_ff @(posedge clk) //Write on rising edge of clk
+    if (WE3) RF[A3] <= WD; //Write the data WD to register file address in A3 
+assign RD1 = (A1 != 0) ? RF[A1] : 0; //Read the data from the register file address in A1
+assign RD2 = (A2 != 0) ? RF[A2] : 0; //Read the data from the register file address in A2
+//Register 0 hardwired to 0
+endmodule
